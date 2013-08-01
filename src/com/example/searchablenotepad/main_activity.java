@@ -49,6 +49,8 @@ public class main_activity extends Activity {
 		case R.id.create_note:
 			goToDrawpad();
 			break;
+		case R.id.Exit:
+			System.exit(0);
 		default:
 			break;
 		}

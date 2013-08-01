@@ -14,9 +14,9 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Back=0x7f070008;
-        public static final int Exit=0x7f070009;
-        public static final int Save=0x7f070007;
+        public static final int Back=0x7f070009;
+        public static final int Exit=0x7f070007;
+        public static final int Save=0x7f070008;
         public static final int clear=0x7f070005;
         public static final int create_note=0x7f070006;
         public static final int edit_menu=0x7f070002;
@@ -36,7 +36,9 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int back=0x7f040007;
+        public static final int cancel=0x7f04000c;
         public static final int clear=0x7f040005;
+        public static final int confirm=0x7f04000b;
         public static final int create=0x7f040001;
         public static final int erase=0x7f040004;
         public static final int eraser=0x7f040003;

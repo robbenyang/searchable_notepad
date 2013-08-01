@@ -17,6 +17,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class WriteView extends View {
 
@@ -44,7 +45,6 @@ public class WriteView extends View {
 	}
 
 	private void init() {
-		c.drawColor(Color.WHITE);
 		setDrawingCacheEnabled(true);
 		setFocusable(true);
 		setFocusableInTouchMode(true);
@@ -60,6 +60,7 @@ public class WriteView extends View {
 	// Override onDraw function. Implementation of writing on the screen
 	@Override
 	public void onDraw(Canvas c) {
+		c.drawColor(Color.WHITE);
 		for (Segment segment : segments) {
 			List<Point> points = segment.points;
 			for (int i = 0; i < points.size() - 1;) {
@@ -102,6 +103,11 @@ public class WriteView extends View {
 			}
 		}
 		invalidate();
+		Toast.makeText(getContext(), "Undo", Toast.LENGTH_SHORT).show();
+	}
+	
+	public void loadImage(){
+		
 	}
 	
 	public boolean activeRedo(Button _redo){
@@ -127,6 +133,7 @@ public class WriteView extends View {
 			}
 		}
 		invalidate();
+		Toast.makeText(getContext(), "Redo", Toast.LENGTH_SHORT).show();
 	}
 
 	public void clear() {

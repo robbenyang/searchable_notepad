@@ -6,8 +6,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
- 
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:alwaysRetainTaskState="true"
@@ -17,10 +18,12 @@
         <activity android:name="main_activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="handwriting"></activity>
+        <activity android:name="handwriting" >
+        </activity>
     </application>
 
 </manifest>
