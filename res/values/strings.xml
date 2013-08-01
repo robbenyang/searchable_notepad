@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name">Searchable Notepad</string>
+    <string name="create">Create</string>
+    <string name="pencil">Pencil</string>
+    <string name="eraser">Eraser</string>
+    <string name="erase">Erase</string>
+    <string name="clear">Clear</string>
+    <string name="save">Save</string>
+    <string name="back">Back</string>
+    <string name="exit">Exit</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    
+
+</resources>
