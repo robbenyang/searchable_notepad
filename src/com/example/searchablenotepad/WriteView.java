@@ -73,62 +73,58 @@ public class WriteView extends View {
 		if (undo != null) {
 			undo.setEnabled(segments.size() > 0);
 		}
-		
-		if(redo != null){
+
+		if (redo != null) {
 			redo.setEnabled(!main.empty());
 		}
 	}
 
-	
-	public boolean activeUndo(Button _undo){
+	public boolean activeUndo(Button _undo) {
 		undo = _undo;
-		undo.setOnClickListener(
-				new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						undo();
-					}
-				});
+		undo.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				undo();
+			}
+		});
 		return true;
 	}
-	
-	public void undo(){
-		if(segments.size() > 0){
+
+	public void undo() {
+		if (segments.size() > 0) {
 			try {
-				Segment temp = segments.remove(segments.size()-1);
+				Segment temp = segments.remove(segments.size() - 1);
 				main.push(temp);
-			}catch(NullPointerException e){
+			} catch (NullPointerException e) {
 				System.out.println("Null Pointer!");
 			}
 		}
 		invalidate();
 		Toast.makeText(getContext(), "Undo", Toast.LENGTH_SHORT).show();
 	}
-	
-	public void loadImage(){
-		
+
+	public void loadImage() {
+
 	}
-	
-	public boolean activeRedo(Button _redo){
+
+	public boolean activeRedo(Button _redo) {
 		redo = _redo;
-		redo.setOnClickListener(
-				new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						redo();
-					}
-				});
+		redo.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				redo();
+			}
+		});
 		return true;
 	}
-	
-	public void redo(){
-		if(!main.empty()){
-			try{
+
+	public void redo() {
+		if (!main.empty()) {
+			try {
 				Segment temp = main.pop();
 				segments.add(temp);
-			}catch(NullPointerException e){
+			} catch (NullPointerException e) {
 				System.out.println("Null Pointer");
 			}
 		}
@@ -138,6 +134,7 @@ public class WriteView extends View {
 
 	public void clear() {
 		segments = new ArrayList<Segment>();
+		main = new Stack<Segment>();
 		c.drawColor(Color.WHITE);
 		invalidate();
 	}

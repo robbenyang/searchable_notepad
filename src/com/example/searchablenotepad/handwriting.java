@@ -14,7 +14,6 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -49,12 +48,36 @@ public class handwriting extends Activity {
 
 					@Override
 					public void onClick(View v) {
-						view.clear();
-						Toast.makeText(getApplicationContext(), "Clear", Toast.LENGTH_SHORT).show();
+						clearDialog();
 					}
 				});
 	    view.activeUndo(undo);
 	    view.activeRedo(redo);
+	}
+	
+	private boolean clearDialog(){
+		AlertDialog.Builder builder = new Builder(this);
+		builder.setMessage("Confirm Clear? All strokes will be deleted and can't be restored");
+		builder.setTitle("Alert");
+		
+		builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				view.clear();
+				Toast.makeText(getApplicationContext(), "Cleared", Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		builder.create().show();
+		return true;
 	}
 
 	
@@ -83,7 +106,7 @@ public class handwriting extends Activity {
 		return true;
 	}
 	
-	private Dialog backDialog(){
+	private boolean backDialog(){
 		AlertDialog.Builder builder = new Builder(this);
 		builder.setMessage("Confirm Going Back?");
 		builder.setTitle("Alert");
@@ -104,9 +127,7 @@ public class handwriting extends Activity {
 			}
 		});
 		builder.create().show();
-		return builder.create();
-		
-		
+		return true;
 	}
 	
 	public void saveToFile(String file_name){
@@ -124,7 +145,7 @@ public class handwriting extends Activity {
 			
 		}
 		
-		view.getDrawingCache().compress(Bitmap.CompressFormat.PNG,90,fout);		
+		view.getDrawingCache().compress(Bitmap.CompressFormat.PNG,100,fout);		
 		try{
 			fout.flush();
 			fout.close();
