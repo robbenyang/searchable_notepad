@@ -138,7 +138,6 @@ public class main_activity extends FragmentActivity {
 			fileList.add(myFile);
 			Log.i("add files", myFile.getName());
 		}
-
 		return fileList;
 	}
 

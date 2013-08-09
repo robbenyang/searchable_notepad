@@ -17,5 +17,6 @@
     <string name="title_activity_main">GridView with Images</string>
     <string name="img_description">Image Description</string>
     <string name="img_original_description">Original Image Description</string>
+    <string name="search">Search</string>
 
 </resources>
