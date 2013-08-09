@@ -93,6 +93,9 @@ public class main_activity extends FragmentActivity {
 			break;
 		case R.id.Exit:
 			exitDialog();
+		case R.id.search:
+			goToSearchAct();
+			break;
 		default:
 			break;
 		}
@@ -124,7 +127,8 @@ public class main_activity extends FragmentActivity {
 		builder.create().show();
 		return true;
 	}
-
+	
+	//Get all files in this app's folder
 	private List<File> getFiles() {
 		if(!isExternalAvailable()){
 			Log.e("External Storage", "External Storage is not avaiable! Loading files failed");
@@ -144,6 +148,12 @@ public class main_activity extends FragmentActivity {
 	// Function to go to creating activity
 	public void goToDrawpad() {
 		Intent intent = new Intent(this, handwriting.class);
+		startActivity(intent);
+	}
+	
+	//Function to go to search activity
+	public void goToSearchAct(){
+		Intent intent = new Intent(this, Search.class);
 		startActivity(intent);
 	}
 

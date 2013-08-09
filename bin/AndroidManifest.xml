@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="handwriting" >
         </activity>
+        <activity android:name="Search"></activity>
     </application>
 
 </manifest>
