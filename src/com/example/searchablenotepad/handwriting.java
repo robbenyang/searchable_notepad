@@ -14,7 +14,6 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
-import android.R.string;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -34,6 +33,7 @@ import android.widget.Toast;
 public class handwriting extends Activity {
 
 	private WriteView view;
+	private DatabaseAdapter db = new DatabaseAdapter(this);
 
 	/** Called when the activity is first created. */
 	@Override
