@@ -91,11 +91,12 @@ public class main_activity extends FragmentActivity {
 		case R.id.create_note:
 			goToDrawpad();
 			break;
-		case R.id.Exit:
-			exitDialog();
 		case R.id.search:
 			goToSearchAct();
 			break;
+		case R.id.Exit:
+			exitDialog();
+
 		default:
 			break;
 		}

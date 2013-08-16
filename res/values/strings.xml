@@ -18,5 +18,7 @@
     <string name="img_description">Image Description</string>
     <string name="img_original_description">Original Image Description</string>
     <string name="search">Search</string>
+    <string name="search_hint">Character you are looking for</string>
+    <string name="search_word">Type in your search keyword</string>
 
 </resources>

@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -27,12 +28,26 @@ public class WriteView extends View {
 	// OnTouchListener erase = new EraseListener();
 
 	private Paint paint;
-	List<Segment> segments = new ArrayList<Segment>();
-	Stack<Segment> main = new Stack<Segment>();
+	private Stack<Segment> main = new Stack<Segment>();
+	private List<Segment> segments = new ArrayList<Segment>();
+	private List<Integer> division = new ArrayList<Integer>();
+	private List<Integer> segDiv = new ArrayList<Integer>();
+	private long startTime=System.currentTimeMillis();
 
-	Segment eraser = new Segment();
-	Button undo = null;
-	Button redo = null;
+	private Button undo = null;
+	private Button redo = null;
+	
+	public List<Integer> getSegDiv() {
+		return segDiv;
+	}
+	
+	public List<Segment> getSegments(){
+		return segments;
+	}
+	
+	public List<Integer> getDivision() {
+		return division;
+	}
 
 	public WriteView(Context context) {
 		super(context);
@@ -77,6 +92,16 @@ public class WriteView extends View {
 		if (redo != null) {
 			redo.setEnabled(!main.empty());
 		}
+		long timer = System.currentTimeMillis() - startTime;
+		if(timer>700 && segments.size() > 0){
+			int sum = 0;
+			for(int i = 0; i < segments.size();i++){
+				sum+=segments.get(i).points.size();
+			}
+			division.add(sum);
+			segDiv.add(segments.size()-1);
+		}
+		startTime = System.currentTimeMillis();
 	}
 
 	public boolean activeUndo(Button _undo) {
@@ -90,21 +115,17 @@ public class WriteView extends View {
 		return true;
 	}
 
-	public void undo() {
+	private void undo() {
 		if (segments.size() > 0) {
 			try {
 				Segment temp = segments.remove(segments.size() - 1);
 				main.push(temp);
 			} catch (NullPointerException e) {
-				System.out.println("Null Pointer!");
+				Log.e("Error in Undo","Null Pointer!");
 			}
 		}
 		invalidate();
 		Toast.makeText(getContext(), "Undo", Toast.LENGTH_SHORT).show();
-	}
-
-	public void loadImage() {
-
 	}
 
 	public boolean activeRedo(Button _redo) {
@@ -119,7 +140,7 @@ public class WriteView extends View {
 		return true;
 	}
 
-	public void redo() {
+	private void redo() {
 		if (!main.empty()) {
 			try {
 				Segment temp = main.pop();
@@ -132,9 +153,12 @@ public class WriteView extends View {
 		Toast.makeText(getContext(), "Redo", Toast.LENGTH_SHORT).show();
 	}
 
-	public void clear() {
-		segments = new ArrayList<Segment>();
-		main = new Stack<Segment>();
+	protected void clear() {
+		segments.clear();
+		division.clear();
+		segDiv.clear();
+		while(!main.empty())
+			main.pop();
 		c.drawColor(Color.WHITE);
 		invalidate();
 	}
@@ -162,7 +186,7 @@ public class WriteView extends View {
  * Helper classes
  */
 class Point {
-	float x, y;
+	public float x, y;
 
 	public Point() {
 
@@ -182,7 +206,7 @@ class Point {
 }
 
 class Segment {
-	List<Point> points;
+	public List<Point> points;
 
 	public Segment() {
 		points = new ArrayList<Point>();

@@ -14,15 +14,17 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Back=0x7f07000c;
-        public static final int Exit=0x7f070009;
-        public static final int Save=0x7f07000b;
+        public static final int Back=0x7f07000e;
+        public static final int Exit=0x7f07000c;
+        public static final int Save=0x7f07000d;
         public static final int clear=0x7f070005;
-        public static final int create_note=0x7f070008;
+        public static final int create_note=0x7f07000a;
         public static final int edit_menu=0x7f070002;
         public static final int main_linearlayout=0x7f070007;
         public static final int main_scrollview=0x7f070006;
-        public static final int search=0x7f07000a;
+        public static final int search=0x7f07000b;
+        public static final int search_button=0x7f070009;
+        public static final int search_field=0x7f070008;
         public static final int write_screen=0x7f070000;
         public static final int writepad_redo=0x7f070004;
         public static final int writepad_undo=0x7f070003;
@@ -31,6 +33,7 @@ public final class R {
     public static final class layout {
         public static final int handwriting=0x7f030000;
         public static final int main_scrollview=0x7f030001;
+        public static final int search_activity=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f060000;
@@ -53,6 +56,8 @@ public final class R {
         public static final int redo=0x7f04000a;
         public static final int save=0x7f040006;
         public static final int search=0x7f040011;
+        public static final int search_hint=0x7f040012;
+        public static final int search_word=0x7f040013;
         public static final int title_activity_main=0x7f04000e;
         public static final int undo=0x7f040009;
     }

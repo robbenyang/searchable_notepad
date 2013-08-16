@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: zinnia
+Description: Zinnia, online handwriting recognizer based on machine learning
+Version: 0.06
+Libs: -L${libdir} -lzinnia -lstdc++
+Libs.private: -lstdc++
+Cflags: -I${includedir}
